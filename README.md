@@ -1,2 +1,2 @@
-# simple_codes
-random codes from my practice
+# simple codes
+ - random codes from my practice
