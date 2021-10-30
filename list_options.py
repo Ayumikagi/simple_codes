@@ -6,7 +6,6 @@ backup = []
 while True:
     print(f'Current values in the list {numbers}')
     choice = input('What would you like to do? (Help for help, obviously): ').upper()
-
     if choice == 'HELP':
         print(textwrap.dedent('''
         Available commands (not case sensitive):
@@ -15,11 +14,9 @@ while True:
         3. Check
         4. Sort
                               '''))
-
     elif choice == 'ADD':
         while True:
             choice = input('Would you like to add at (pos) or (end)?: ').upper()
-
             if choice == 'END':
                 while True:
                     edit = input('Enter a value to insert: ')
@@ -30,7 +27,6 @@ while True:
                     except ValueError:
                         print(f'"{edit}" is not a valid input!')
                 break
-
             elif choice == 'POS':
                 while True:
                     edit = input('Ensert a value to insert: ')
@@ -47,14 +43,12 @@ while True:
                     except ValueError:
                         print(f'"{pos}" is not a valid input!')
                 numbers.insert(pos, edit)
-                break
-            
+                break         
             else:
                 print(f'"{choice}" is not a valid input!')
-        
     elif choice == 'REMOVE':
         while True:
-            choice = input('Remove: one, all, last?: ').upper()
+            choice = input('Remove: one, duplicates, all or last?: ').upper()
 
             if choice == 'ONE':
                 while True:
@@ -70,7 +64,13 @@ while True:
                         numbers.remove(edit)
                         break
                 break
-
+            elif choice in ('DUPLICATES, DUPLICATE, DUPE, D'):
+                uniques = []
+                for number in numbers:
+                    if number not in uniques:
+                        uniques.append(number)
+                    numbers = uniques
+                break
             elif choice == 'ALL':
                 while True:
                     choice = input('Are you sure you want to remove ALL values?(Y/N): ').upper()
@@ -83,7 +83,6 @@ while True:
                     else:
                         print(f'"{choice}" is not a valid input!')
                 break
-
             elif choice == 'LAST':
                 while True:
                     choice = input('Are you sure you want to remove the last value in the list?(Y/N): ').upper()
@@ -96,10 +95,8 @@ while True:
                     else:
                         print(f'"{choice}" is not a valid input!')
                 break
-
             else:
                 print(f'"{choice}" is not a valid input!')
-
     elif choice == 'CHECK':
         while True:
             choice = input('What would you like to check?(val.pos, val.count): ').upper()
@@ -117,7 +114,6 @@ while True:
                         print(f'Value "{choice}" found at position [{numbers.index(choice)}]')
                         break
                 break
-
             elif choice == 'VAL.COUNT':
                 while True:
                     choice = input('What value you wish to count?: ')
@@ -129,10 +125,8 @@ while True:
                         print(f'Value "{choice}" not found in the list.')
                     else:
                         print(f'Value "{choice}" found {numbers.count(choice)} time(s).')
-
             else:
                 print(f'"{choice}" is not a valid input!')
-
     elif choice == 'SORT':
         while True:
             choice = input('(A)scending or (D)escending sort?: ').upper()
@@ -147,7 +141,6 @@ while True:
                 break
             else:
                 print(f'"{choice}" is not a valid input!')
-
     elif choice == 'BACKUP':
         while True:
             choice = input('Would you like to make a (B)ackup or (R)estore the list from it?: ').upper()
@@ -166,10 +159,8 @@ while True:
                     break
             else:
                 print(f'"{choice}" is not a valid input!')
-
     elif choice == 'QUIT':
         input('Bye! Press any key to exit.')
         exit()
-
     else:
         print(f'"{choice}" is not a valid input!')
