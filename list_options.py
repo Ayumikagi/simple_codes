@@ -13,7 +13,7 @@ while True:
         2. Remove   6. Quit
         3. Check
         4. Sort
-                              '''))
+        '''))
     elif choice == 'ADD':
         while True:
             choice = input('Would you like to add at (pos) or (end)?: ').upper()
